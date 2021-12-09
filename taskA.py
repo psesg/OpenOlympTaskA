@@ -46,8 +46,23 @@ if  leastnotfound ==  True:
     exit(0)
 
 for i in range(len(n_list)):
+    pos = -1
+    minpos = -1
+    bFit = False
+    firstOc = True
     for j in range(len(m_list)-1, -1, -1):
-        #print("m_list[{}] = {}".format(j, m_list[j]), end=" ")
         indexes = [k for k, l in enumerate(n_list) if l == m_list[j]]
-        print(indexes, end=" ")
-    print("")
+        #print(indexes, end=" ")
+        for x in  range(len(indexes)):
+            #print(indexes[x], end=" ")
+            if indexes[x] < len(m_list)-1:
+                continue
+            else:
+                Fit = True
+                if firstOc == True:
+
+                    minpos = indexes[x]+1
+                    firstOc = False
+                    #print(minpos+1, end=" ")
+
+    print(minpos, end=" ")
