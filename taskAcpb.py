@@ -29,13 +29,13 @@ ans = [-1] * n
 j = 0
 p = 0
 for cur in range(n):
-    if a[cur] == b[j] and j < m - 2:
+    if a[cur] == b[j] and j < m-2:
         j = j + 1
-    if a[cur] == b[m - 2] and j == m - 2:
+    if a[cur] == b[m - 2] and j == m-2:
         p = cur
         if j != n - 1:
             j = j + 1
-    if a[cur] == b[m - 1] and j == m - 1:
+    if a[cur] == b[m - 1] and j == m-1:
         for k in range(p, 0, -1):
             if ans[k] == -1:
                 ans[k] = cur + 1

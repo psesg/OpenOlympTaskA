@@ -13,14 +13,16 @@ for k in range(len(lines)):
     workstr = lines[k].strip()
     if k == 0:
         nm = workstr.strip("\n").split(" ", 2)
-        n = nm[0]
-        m = nm[1]
+        n = int(nm[0])
+        m = int(nm[1])
         logging.info("n = {}, m = {}".format(n, m))
     if k == 1:
         n_list = workstr.strip("\n").split(" ", int(n))
+        n_list = list(map(int, n_list))
         logging.info("n_list = {}".format(n_list))
     if k == 2:
         m_list = workstr.strip("\n").split(" ", int(m))
+        m_list = list(map(int, m_list))
         logging.info("m_list = {}".format(m_list))
 
 # print(m_list[-1:], len(m_list))
@@ -46,23 +48,11 @@ if  leastnotfound ==  True:
     exit(0)
 
 for i in range(len(n_list)):
-    pos = -1
-    minpos = -1
-    bFit = False
-    firstOc = True
-    for j in range(len(m_list)-1, -1, -1):
-        indexes = [k for k, l in enumerate(n_list) if l == m_list[j]]
-        #print(indexes, end=" ")
-        for x in  range(len(indexes)):
+    #for j in range(len(m_list)-1, -1, -1):
+    for j in range(len(m_list) ):
+        indexes = [k for k, l in enumerate(n_list[i:]) if l == m_list[j]]
+        print(indexes, end=" ")
+        #for x in  range(len(indexes)):
             #print(indexes[x], end=" ")
-            if indexes[x] < len(m_list)-1:
-                continue
-            else:
-                Fit = True
-                if firstOc == True:
+    print("")
 
-                    minpos = indexes[x]+1
-                    firstOc = False
-                    #print(minpos+1, end=" ")
-
-    print(minpos, end=" ")

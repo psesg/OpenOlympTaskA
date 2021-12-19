@@ -25,6 +25,7 @@ for k in range(len(lines)):
         b = list(map(int, m_list))
         logging.info("m_list = {}".format(b))
 
+
 res = []
 for idx in range(n):
     i = idx
