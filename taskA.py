@@ -3,7 +3,7 @@ import sys
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)  # DEBUG, CRITICAL
 
-with open('input.txt', 'r') as f:
+with open('input1.txt', 'r') as f:
     lines = f.readlines()
 f.close()
 n_list = []
@@ -15,15 +15,15 @@ for k in range(len(lines)):
         nm = workstr.strip("\n").split(" ", 2)
         n = int(nm[0])
         m = int(nm[1])
-        logging.info("n = {}, m = {}".format(n, m))
+
     if k == 1:
         n_list = workstr.strip("\n").split(" ", int(n))
         n_list = list(map(int, n_list))
-        logging.info("n_list = {}".format(n_list))
+
     if k == 2:
         m_list = workstr.strip("\n").split(" ", int(m))
         m_list = list(map(int, m_list))
-        logging.info("m_list = {}".format(m_list))
+
 
 # print(m_list[-1:], len(m_list))
 
@@ -51,22 +51,39 @@ if  leastnotfound ==  True:
         print("-1", end=" ")
     exit(0)
 
+logging.info("n = {}, m = {}".format(n, m))
+logging.info("n_list = {}".format(n_list))
+logging.info("m_list = {}".format(m_list))
+
 for i in range(len(n_list)):
 
     ind_max_lim = len(n_list[i:])-1
     ind_max = -1
     res = "-1"
     ind_prev = 0
-    for j in range(len(m_list)-1, -1, -1):
+    for j in range(len(m_list)):
     #for j in range(len(m_list)):
         indexes = [k for k, l in enumerate(n_list[i:]) if l == m_list[j]]
         print(indexes, end=" ")
-        for indx in range(len(indexes)-1, -1, -1):
+        count_vhoj = 0
+        for indx in range(len(indexes)):
             print(indexes[indx]+i, end="*")
-            if indexes[indx] < ind_max_lim and  indexes[indx] > len(m_list)-1 and indexes[indx] > ind_prev:
+            if indexes[indx] < ind_max_lim and  indexes[indx] > len(m_list)-1 and indexes[indx] > ind_prev and count_vhoj == 0:
                 ind_max = indexes[indx]+i+1
                 ind_prev = ind_max
+                print(ind_max, end="}")
+                count_vhoj = count_vhoj + 1
+            if count_vhoj == len(m_list):
+                count_vhoj = 0
                 break
+
+    if count_vhoj == len(m_list):
+        count_vhoj = 0
+        ind_max = -1
+        break
+
+
+                #break
 
         #for x in  range(len(indexes)):
             #print(indexes[x], end=" ")
