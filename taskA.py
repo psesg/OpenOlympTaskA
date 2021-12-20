@@ -64,7 +64,7 @@ for i in range(len(n_list)):
         for indx in range(len(indexes)-1, -1, -1):
             print(indexes[indx]+i, end="*")
             if indexes[indx] < ind_max_lim and  indexes[indx] > len(m_list)-1 and indexes[indx] > ind_prev:
-                ind_max = indexes[indx]+i
+                ind_max = indexes[indx]+i+1
                 ind_prev = ind_max
                 break
 
