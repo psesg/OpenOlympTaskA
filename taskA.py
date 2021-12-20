@@ -62,9 +62,9 @@ for i in range(len(n_list)):
         indexes = [k for k, l in enumerate(n_list[i:]) if l == m_list[j]]
         print(indexes, end=" ")
         for indx in range(len(indexes)-1, -1, -1):
-            print(indexes[indx], end="*")
+            print(indexes[indx]+i, end="*")
             if indexes[indx] < ind_max_lim and  indexes[indx] > len(m_list)-1 and indexes[indx] > ind_prev:
-                ind_max = indexes[indx]
+                ind_max = indexes[indx]+i
                 ind_prev = ind_max
                 break
 
