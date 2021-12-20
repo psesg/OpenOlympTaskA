@@ -28,14 +28,17 @@ for k in range(len(lines)):
 # print(m_list[-1:], len(m_list))
 
 if len(m_list) > len(n_list):       # never found
+    logging.info("len(m_list) > len(n_list)")
     for i in range(len(n_list)):
         print("-1", end=" ")
-        exit(0)
+    exit(0)
 
 if m_list == n_list:
-    for i in range(len(n_list)):
-        print("1", end=" ")             # equal
-        exit(0)
+    logging.info("m_list == n_list")
+    print("1", end=" ")
+    for i in range(len(n_list)-1):
+        print("-1", end=" ")             # equal
+    exit(0)
 
 leastnotfound = False
 for j in range(len(m_list) - 1, -1, -1):
@@ -43,16 +46,30 @@ for j in range(len(m_list) - 1, -1, -1):
         leastnotfound = True
         break
 if  leastnotfound ==  True:
+    logging.info(" leastnotfound ==  True")
     for i in range(len(n_list)):
         print("-1", end=" ")
     exit(0)
 
 for i in range(len(n_list)):
-    #for j in range(len(m_list)-1, -1, -1):
-    for j in range(len(m_list) ):
+
+    ind_max_lim = len(n_list[i:])-1
+    ind_max = -1
+    res = "-1"
+    ind_prev = 0
+    for j in range(len(m_list)-1, -1, -1):
+    #for j in range(len(m_list)):
         indexes = [k for k, l in enumerate(n_list[i:]) if l == m_list[j]]
         print(indexes, end=" ")
+        for indx in range(len(indexes)-1, -1, -1):
+            print(indexes[indx], end="*")
+            if indexes[indx] < ind_max_lim and  indexes[indx] > len(m_list)-1 and indexes[indx] > ind_prev:
+                ind_max = indexes[indx]
+                ind_prev = ind_max
+                break
+
         #for x in  range(len(indexes)):
             #print(indexes[x], end=" ")
-    print("")
+    print("ind_max = ", ind_max)
 
+# for i in range(len(n_list)):
