@@ -35,4 +35,8 @@ for idx in range(n):
             j += 1
         i += 1
     res.append(i if j == m else -1)
-print(*res)
+
+for i in range(len(res)):
+    print(res[i], end=" ")
+
+#print(*res)
